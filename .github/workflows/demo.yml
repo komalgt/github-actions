@@ -1,0 +1,14 @@
+name: hello world
+
+on:
+push:
+branches:
+-main
+
+jobs: 
+demo1:
+runs-on: ubuntu-latest
+
+steps:
+- name: greeting
+run: echo "hello world!!!!"
