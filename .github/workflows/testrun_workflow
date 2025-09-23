@@ -1,0 +1,12 @@
+def run_workflow():
+    try:
+        print("Starting workflow...")
+        # Force a failure here deliberately
+        raise Exception("Manual failure for alert testing")
+    except Exception as e:
+        # Email alert logic
+        subject = "Workflow Failure Alert"
+        body = f"The workflow failed with error: {str(e)}"
+        to_email = "incident-alerts@company.com"
+        send_alert_email(subject, body, to_email)
+        print("Incident alert email sent.")
