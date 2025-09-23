@@ -14,7 +14,7 @@ def send_failure_alert(subject, body, to_emails, from_email, smtp_server, smtp_p
             server.login(smtp_user, smtp_password)
             server.sendmail(from_email, to_emails, msg.as_string())  # Pass full list for actual send
     except Exception as smtp_error:
-        print(f"Failed to send email alert: {smtp_error}")
+        print(f"Failed to send emails alert: {smtp_error}")
 
 # List of recipients (including duplicates)
 TO_EMAILS = [
