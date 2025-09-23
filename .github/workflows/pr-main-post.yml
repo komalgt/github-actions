@@ -3,22 +3,18 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'src/**'
   pull_request:
-    branches:
-      - main
+    paths:
+      - 'src/**'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Add your custom steps below this line
-      # For example, you can add steps for Python, Java, or shell scripts
-      # - name: Run a script
-      #   run: echo "This is where you run your scripts or commands."
-
+      - uses: actions/checkout@v3
+      - name: Run tests
+        run: |
+          echo "Running your tests."
+          # Replace with your actual test command
