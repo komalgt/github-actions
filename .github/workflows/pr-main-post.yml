@@ -16,8 +16,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # Add your custom steps below this line
-      # For example, you can add steps for Python, Java, or shell scripts
-      # - name: Run a script
-      #   run: echo "This is where you run your scripts or commands."
+        
+        - name: Post job status to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = process.env.JOB_STATUS === 'success' ? '✅ All steps succeeded.' : '❌ Some steps failed.';
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: status
+            })
+        env:
+          JOB_STATUS: ${{ job.status }}
