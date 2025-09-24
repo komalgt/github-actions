@@ -21,8 +21,8 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: komalgt@gmail.com
-          password: rkuz ippx ackk cwmv
+          username: ${{ secrets.SMTP_USER }}
+          password:  ${{ secrets.SMTP_PASS }}
           to: kturakannavar@deloitte.com
           from: komalgt@gmail.com.com
           subject: 'GitHub Actions Failed'
