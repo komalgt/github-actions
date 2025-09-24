@@ -24,4 +24,4 @@ jobs:
       - name: Run Trivy on YAML file
         run: |
           # Replace 'yourfile.yml' with your YAML file's name
-          trivy config --severity MEDIUM --exit-code 1 .github/workflows/notify.yml
+          trivy config --severity MEDIUM --exit-code 1 .github/workflows/displaypwd.yml
